@@ -61,14 +61,14 @@ group :test do
 end
 
 # Database
-gem 'annotate'
+gem "annotaterb"
 
 # Environment variables
 gem 'figaro'
 
 # GraphQL
-gem 'batch-loader'
-gem 'graphql'
+gem 'batch-loader', '~> 0.3.0'
+gem 'graphql', '~> 2.4', '>= 2.4.3'
 
 # Math and financial
 gem 'money-rails', '~> 1.15'
