@@ -31,4 +31,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .github/workflows/ci.yml
+
+# Ignore application configuration
 /config/application.yml
+/db/schema.rb
