@@ -13,6 +13,7 @@
 #
 # Indexes
 #
+#  index_categories_on_slug     (slug)
 #  index_categories_on_user_id  (user_id)
 #
 # Foreign Keys
@@ -21,4 +22,16 @@
 #
 class Category < ApplicationRecord
   belongs_to :user
+  has_many :expenses, dependent: :nullify
+
+  validates :name, presence: true
+  validates :color, presence: true
+
+  after_save :update_slug
+
+  private
+
+  def update_slug
+    update_column(:slug, "#{name.parameterize}-#{id}-#{user_id}") # rubocop:disable Rails/SkipsModelValidations
+  end
 end

@@ -21,10 +21,10 @@
 #
 FactoryBot.define do
   factory :category do
-    name { "MyString" }
-    slug { "MyString" }
-    color { "MyString" }
-    icon { "MyString" }
-    user { nil }
+    association :user
+
+    name { Faker::Commerce.department(max: 1) }
+    color { Faker::Color.hex_color }
+    icon { Faker::Lorem.word.titleize }
   end
 end

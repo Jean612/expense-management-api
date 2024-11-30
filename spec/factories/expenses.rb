@@ -27,12 +27,13 @@
 #
 FactoryBot.define do
   factory :expense do
-    description { "MyString" }
-    amount { "9.99" }
-    currency { "MyString" }
-    date { "2024-11-26" }
-    category { nil }
-    payment_method { nil }
-    user { nil }
+    association :user
+    association :category
+    association :payment_method
+
+    description { Faker::Commerce.product_name }
+    amount { Faker::Commerce.price(range: 1..400.0) }
+    currency { Constants::Currency::CURRENCIES.keys.sample }
+    date { Faker::Date.between(from: 7.days.ago, to: Time.zone.today) }
   end
 end

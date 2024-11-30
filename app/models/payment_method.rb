@@ -16,6 +16,7 @@
 #
 # Indexes
 #
+#  index_payment_methods_on_slug     (slug)
 #  index_payment_methods_on_user_id  (user_id)
 #
 # Foreign Keys
@@ -24,4 +25,16 @@
 #
 class PaymentMethod < ApplicationRecord
   belongs_to :user
+
+  has_many :expenses, dependent: :nullify
+
+  validates :name, presence: true
+
+  after_save :update_slug
+
+  private
+
+  def update_slug
+    update!(slug: "#{name.parameterize}-#{id}-#{user_id}")
+  end
 end

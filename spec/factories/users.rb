@@ -13,10 +13,9 @@
 #
 FactoryBot.define do
   factory :user do
-    name { "MyString" }
-    email { "MyString" }
-    active { false }
-    password_hash { "MyString" }
-    password_salt { "MyString" }
+    name { Faker::Name.name }
+    email { Faker::Internet.email(name:) }
+    active { true }
+    password { Faker::Internet.password(min_length: 6) }
   end
 end

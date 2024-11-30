@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_26_051949) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_30_203530) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,6 +22,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_26_051949) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_categories_on_slug"
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
@@ -35,7 +36,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_26_051949) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["amount"], name: "index_expenses_on_amount"
     t.index ["category_id"], name: "index_expenses_on_category_id"
+    t.index ["currency"], name: "index_expenses_on_currency"
+    t.index ["date"], name: "index_expenses_on_date"
     t.index ["payment_method_id"], name: "index_expenses_on_payment_method_id"
     t.index ["user_id"], name: "index_expenses_on_user_id"
   end
@@ -51,6 +55,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_26_051949) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_payment_methods_on_slug"
     t.index ["user_id"], name: "index_payment_methods_on_user_id"
   end
 
@@ -62,6 +67,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_26_051949) do
     t.string "password_salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "locale", default: "es-PE"
+    t.index ["active"], name: "index_users_on_active"
+    t.index ["email"], name: "index_users_on_email"
   end
 
   add_foreign_key "categories", "users"

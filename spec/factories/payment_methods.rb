@@ -24,12 +24,11 @@
 #
 FactoryBot.define do
   factory :payment_method do
-    name { "MyString" }
-    bank { "MyString" }
+    association :user
+
+    name { Faker::Bank.name }
+    bank { Faker::Bank.name }
     cash { false }
-    credit_card { false }
-    debit_card { false }
-    slug { "MyString" }
-    user { nil }
+    credit_card { true }
   end
 end

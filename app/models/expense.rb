@@ -26,7 +26,14 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Expense < ApplicationRecord
+  enum :currency, Constants::Currency::CURRENCIES.keys
+
   belongs_to :category
   belongs_to :payment_method
   belongs_to :user
+
+  validates :description, presence: true
+  validates :amount, presence: true
+  validates :date, presence: true
+  validates :currency, presence: true
 end
