@@ -35,6 +35,6 @@ class PaymentMethod < ApplicationRecord
   private
 
   def update_slug
-    update!(slug: "#{name.parameterize}-#{id}-#{user_id}")
+    update_column(:slug, "#{name.parameterize}-#{id}-#{user_id}") # rubocop:disable Rails/SkipsModelValidations
   end
 end
