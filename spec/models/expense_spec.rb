@@ -15,7 +15,10 @@
 #
 # Indexes
 #
+#  index_expenses_on_amount             (amount)
 #  index_expenses_on_category_id        (category_id)
+#  index_expenses_on_currency           (currency)
+#  index_expenses_on_date               (date)
 #  index_expenses_on_payment_method_id  (payment_method_id)
 #  index_expenses_on_user_id            (user_id)
 #

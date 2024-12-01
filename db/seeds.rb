@@ -12,7 +12,7 @@
 # Create user
 puts 'Creating user...'
 email = 'user@test.pe'
-user = User.find_by_email(email) || User.create!(name: Faker::Name.name, email: email, password: '123456')
+user = User.find_by_email(email) || User.create!(name: Faker::Name.name, email: email, password: '123456', password_confirmation: '123456')
 puts "User created: #{user.email}"
 
 # Create categories

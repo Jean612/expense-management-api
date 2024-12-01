@@ -3,7 +3,7 @@ class AuthenticationService
     user = User.find_by(email: email)
 
     # Si las credenciales son incorrectas, devuelve un error
-    return { success: false, error: 'Invalid email or password' } unless user&.valid_password?(password)
+    return { success: false, error: 'Invalid email or password' } unless user&.authenticate(password)
 
     # Si las credenciales son correctas, genera el token
     token = JwtService.encode({ user_id: user.id })

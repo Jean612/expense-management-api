@@ -24,7 +24,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class PaymentMethod < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, inverse_of: :payment_methods
 
   has_many :expenses, dependent: :nullify
 

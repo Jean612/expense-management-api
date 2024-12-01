@@ -2,15 +2,14 @@
 #
 # Table name: users
 #
-#  id            :bigint           not null, primary key
-#  active        :boolean          default(TRUE)
-#  email         :string           not null
-#  locale        :string           default("es-PE")
-#  name          :string           not null
-#  password_hash :string
-#  password_salt :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id              :bigint           not null, primary key
+#  active          :boolean          default(TRUE)
+#  email           :string           not null
+#  locale          :string           default(NULL)
+#  name            :string           not null
+#  password_digest :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 # Indexes
 #

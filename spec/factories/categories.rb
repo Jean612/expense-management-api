@@ -13,6 +13,7 @@
 #
 # Indexes
 #
+#  index_categories_on_slug     (slug)
 #  index_categories_on_user_id  (user_id)
 #
 # Foreign Keys
