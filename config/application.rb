@@ -1,4 +1,5 @@
 require_relative 'boot'
+require_relative '../app/middleware/api_token_authenticator'
 
 require 'rails'
 # Pick the frameworks you want:
@@ -28,6 +29,7 @@ module ExpenseManagementApi
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
     config.autoload_paths += %W[#{config.root}/lib]
+    config.eager_load_paths += %W[#{config.root}/app/middleware]
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -41,5 +43,8 @@ module ExpenseManagementApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.middleware.use ApiTokenAuthenticator
+    config.middleware.insert_before 0, ApiTokenAuthenticator
+    config.hosts << 'www.example.com'
   end
 end
