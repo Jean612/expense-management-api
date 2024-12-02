@@ -26,6 +26,6 @@ FactoryBot.define do
 
     name { Faker::Commerce.department(max: 1) }
     color { Faker::Color.hex_color }
-    icon { Faker::Lorem.word.titleize }
+    icon { Constants::Icons::LUCIDA_ICONS.sample }
   end
 end

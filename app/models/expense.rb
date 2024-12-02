@@ -9,8 +9,8 @@
 #  description       :string           not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  category_id       :bigint           not null
-#  payment_method_id :bigint           not null
+#  category_id       :bigint
+#  payment_method_id :bigint
 #  user_id           :bigint           not null
 #
 # Indexes
@@ -29,10 +29,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Expense < ApplicationRecord
-  enum :currency, Constants::Currency::CURRENCIES.keys
-
-  belongs_to :category
-  belongs_to :payment_method
+  # enum :currency, { usd: 0, pen: 1, eur: 2 }, validate: true
+  belongs_to :category, optional: true
+  belongs_to :payment_method, optional: true
   belongs_to :user
 
   validates :description, presence: true

@@ -1,15 +1,12 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :create, Session
-
     return if user.blank?
 
-    ## User
-    # Category
-    can %i[read update destroy], Category, user: user
+    # Los usuarios pueden gestionar solo sus propios recursos
+    can :manage, Category, user_id: user.id
+    can :manage, Expense, user_id: user.id
+    can :manage, PaymentMethod, user_id: user.id
   end
 end

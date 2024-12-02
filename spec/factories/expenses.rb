@@ -9,8 +9,8 @@
 #  description       :string           not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  category_id       :bigint           not null
-#  payment_method_id :bigint           not null
+#  category_id       :bigint
+#  payment_method_id :bigint
 #  user_id           :bigint           not null
 #
 # Indexes
@@ -36,7 +36,7 @@ FactoryBot.define do
 
     description { Faker::Commerce.product_name }
     amount { Faker::Commerce.price(range: 1..400.0) }
-    currency { Constants::Currency::CURRENCIES.keys.sample }
+    currency { Constants::Currency::CURRENCIES.keys.sample.to_s }
     date { Faker::Date.between(from: 7.days.ago, to: Time.zone.today) }
   end
 end

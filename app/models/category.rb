@@ -21,6 +21,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Category < ApplicationRecord
+  # enum :icon, Constants::Icons::LUCIDA_ICONS.map(&:to_sym), default: Constants::Icons::LUCIDA_ICONS.map(&:to_sym).sample
   belongs_to :user
   has_many :expenses, dependent: :nullify
 

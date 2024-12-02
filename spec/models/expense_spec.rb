@@ -9,8 +9,8 @@
 #  description       :string           not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  category_id       :bigint           not null
-#  payment_method_id :bigint           not null
+#  category_id       :bigint
+#  payment_method_id :bigint
 #  user_id           :bigint           not null
 #
 # Indexes
